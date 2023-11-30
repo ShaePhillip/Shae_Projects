@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Results</title>
+    <!-- Add your favorite font link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            color: #343a40;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #007bff;
+        }
+
+        .list-group-item {
+            background-color: #f8d7da;
+            margin-top: 10px;
+            padding: 20px;
+            border: 2px solid #d6d8db;
+            border-radius: 15px;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            font-size: 1.5em;
+            background-color: #6c757d;
+        }
+
+        .btn-vote,
+        .btn-return {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .btn-vote {
+            background-color: #ffc107;
+            color: #343a40;
+            border: none;
+        }
+
+        .btn-return {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+    </style>
+
+<div class="container">
+    <h1 class="display-4 text-center mb-4">Latest Polls</h1>
+
+    {% if latest_question_list %}
+        <ul class="list-group">
+            {% for question in latest_question_list %}
+                <li class="list-group-item">
+                    <a href="{% url 'polls:detail' question.id %}" class="text-dark">
+                        {{ question.question_text }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info mt-4">
+            <p>No polls are available.</p>
+        </div>
+    {% endif %}
+</div>
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Click Here To Log Out</a></p>
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'user_auth:login' %}">Log In</a>
+{% endif %}
