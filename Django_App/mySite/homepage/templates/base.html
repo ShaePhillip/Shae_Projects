@@ -1,4 +1,94 @@
-<h1> Hello </h1>
-<a href="{% url 'polls:index' %}">Click Here to visit the Polls website</a> <br><br>
-<a href="{% url 'user_auth:login' %}">Log In</a> <br><br>
-<a href="{% url 'user_auth:signup' %}">Sign Up</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Website</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #343a40;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to My Awesome Dad-Joke Voting Website!</h1>
+    </header>
+
+    <main>
+        <h2>Hello</h2>
+        <p>Welcome to the homepage of the website. Here, you can find interesting content and participate in
+            exciting polls.</p>
+
+        <p>If you're ready to have some fun, click the button below to visit the Polls website and vote for your
+            favorite dad joke answer:</p>
+
+        <a class="btn" href="{% url 'polls:index' %}">Visit the Polls Website</a>
+
+        <br><br>
+
+        <p>If you haven't logged in yet, you won't be able to vote. Log in, or sign up to unlock the full
+            experience:</p>
+
+        <a class="btn" href="{% url 'user_auth:login' %}">Log In</a> <br><br>
+        <a class="btn" href="{% url 'user_auth:signup' %}">Sign Up</a>
+    </main>
+
+</body>
+
+</html>
